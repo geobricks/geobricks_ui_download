@@ -38,7 +38,8 @@ define(['jquery',
             filters: translate.filters,
             progress: translate.progress,
             datasources: translate.datasources,
-            please_select: translate.please_select
+            please_select: translate.please_select,
+            download_selected_layers: translate.download_selected_layers
         };
         var render = Mustache.render(template, view);
         $('#' + this.CONFIG.placeholder_id).html(render);

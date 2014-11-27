@@ -6,7 +6,8 @@ define({
         progress: 'Progress',
         datasources: 'Datasources',
         please_select: 'Please Select...',
-        countries: 'Countries'
+        countries: 'Countries',
+        download_selected_layers: 'Download Selected Layers'
     },
     fr : true,
     es : true
