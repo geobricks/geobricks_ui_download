@@ -1,7 +1,9 @@
+var root = '../modules/';
+
 define(['jquery',
         'mustache',
-        'text!../modules/geobricks_ui_download/html/templates.html',
-        'i18n!../modules/geobricks_ui_download/nls/translate',
+        'text!' + root + 'geobricks_ui_download/html/templates.html',
+        'i18n!' + root + 'geobricks_ui_download/nls/translate',
         'chosen',
         'bootstrap'], function ($, Mustache, templates, translate, chosen) {
 
