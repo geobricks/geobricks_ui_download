@@ -94,6 +94,9 @@ define(['jquery',
                 lang: _this.CONFIG.lang,
                 placeholder_id: 'dynamic_filters'
             });
+            $('#download_button').click(function() {
+                MODULE.download();
+            });
         });
     };
 
