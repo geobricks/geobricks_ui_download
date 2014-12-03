@@ -1,9 +1,7 @@
-var root = '../modules/';
-
 define(['jquery',
         'mustache',
-        'text!' + root + 'geobricks_ui_download/html/templates.html',
-        'i18n!' + root + 'geobricks_ui_download/nls/translate',
+        'text!geobricks_ui_download/html/templates.html',
+        'i18n!geobricks_ui_download/nls/translate',
         'chosen',
         'bootstrap'], function ($, Mustache, templates, translate, chosen) {
 
@@ -89,7 +87,7 @@ define(['jquery',
         var _this = this;
         Backbone.history.navigate('/en/download/modis', true);
         $('#dynamic_filters').empty();
-        require(['geobricks_ui_download_' + data_source_id], function (MODULE) {
+        require(['GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase()], function (MODULE) {
             MODULE.init({
                 lang: _this.CONFIG.lang,
                 placeholder_id: 'dynamic_filters'
