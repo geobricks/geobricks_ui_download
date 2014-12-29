@@ -89,7 +89,6 @@ define(['jquery',
         $('#dynamic_filters').empty();
         console.debug('GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase());
         require(['GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase()], function (MODULE) {
-            console.debug('GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase());
             MODULE.init({
                 lang: _this.CONFIG.lang,
                 placeholder_id: 'dynamic_filters'
