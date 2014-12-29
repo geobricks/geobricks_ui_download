@@ -85,7 +85,7 @@ define(['jquery',
 
     DOWNLOAD.prototype.build_data_source_interface = function(data_source_id) {
         var _this = this;
-        Backbone.history.navigate('/en/download/modis', true);
+        Backbone.history.navigate('/en/download/' + data_source_id, true);
         $('#dynamic_filters').empty();
         console.debug('GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase());
         require(['GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase()], function (MODULE) {
