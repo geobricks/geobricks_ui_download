@@ -1,9 +1,9 @@
 define(['jquery',
-        'mustache',
+        'handlebars',
         'text!geobricks_ui_download/html/templates.hbs',
         'i18n!geobricks_ui_download/nls/translate',
         'select2',
-        'bootstrap'], function ($, Mustache, templates, translate) {
+        'bootstrap'], function ($, Handlebars, templates, translate) {
 
     'use strict';
 
@@ -31,8 +31,16 @@ define(['jquery',
         this.CONFIG.lang = this.CONFIG.lang != null ? this.CONFIG.lang : 'en';
 
         /* Render the main structure. */
-        var template = $(templates).filter('#main_structure').html();
-        var view = {
+        this.render_main_structure();
+
+    };
+
+    DOWNLOAD.prototype.render_main_structure = function(datasource_id) {
+
+        /* Render the main structure. */
+        var source = $(templates).filter('#main_structure').html();
+        var template = Handlebars.compile(source);
+        var dynamic_data = {
             title: translate.title,
             subtitle: translate.subtitle,
             filters: translate.filters,
@@ -41,8 +49,11 @@ define(['jquery',
             please_select: translate.please_select,
             download_selected_layers: translate.download_selected_layers
         };
-        var render = Mustache.render(template, view);
-        $('#' + this.CONFIG.placeholder_id).html(render);
+        var html = template(dynamic_data);
+        $('#' + this.CONFIG.placeholder_id).html(html);
+
+        /* Store datasource selector. */
+        this.CONFIG.datasource_selector = $('#datasource_selector');
 
         /* This. */
         var _this = this;
@@ -69,13 +80,16 @@ define(['jquery',
                     s += '</option>';
                 }
 
-                /* Trigger Chosen. */
-                $('#datasource_selector').html(s);
-                $('#datasource_selector').select2();
-                $('#datasource_selector').change(function() {
+                /* Trigger Select2. */
+                _this.CONFIG.datasource_selector.html(s).select2();
+                _this.CONFIG.datasource_selector.change(function() {
                     var data_source_id = $('#' + this.id + ' option:selected').val().toLowerCase();
                     _this.build_data_source_interface(data_source_id);
                 });
+
+                /* Build datasource panel. */
+                if (datasource_id != undefined)
+                    $('#datasource_selector').val(datasource_id.toUpperCase()).trigger('change')
 
             }
 
