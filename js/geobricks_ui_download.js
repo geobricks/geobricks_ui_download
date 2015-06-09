@@ -70,7 +70,7 @@ define(['jquery',
 
                 /* Trigger Chosen. */
                 $('#datasource_selector').html(s);
-                $('#datasource_selector').chosen({disable_search_threshold: 10});
+                $('#datasource_selector').select2({disable_search_threshold: 10});
                 $('#datasource_selector').change(function() {
                     var data_source_id = $('#' + this.id + ' option:selected').val().toLowerCase();
                     _this.build_data_source_interface(data_source_id);
@@ -142,7 +142,7 @@ define(['jquery',
 
                 /* Trigger Chosen. */
                 $('#' + prefix + '_filter').html(s);
-                $('#' + prefix + '_filter').chosen({disable_search_threshold: 10});
+                $('#' + prefix + '_filter').select2({disable_search_threshold: 10});
 
             }
 
