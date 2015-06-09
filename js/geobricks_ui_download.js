@@ -30,9 +30,6 @@ define(['jquery',
         /* Fix the language, if needed. */
         this.CONFIG.lang = this.CONFIG.lang != null ? this.CONFIG.lang : 'en';
 
-        /* Render the main structure. */
-        this.render_main_structure();
-
     };
 
     DOWNLOAD.prototype.render_main_structure = function(datasource_id) {
@@ -164,6 +161,6 @@ define(['jquery',
 
     };
 
-    return new DOWNLOAD();
+    return DOWNLOAD;
 
 });
