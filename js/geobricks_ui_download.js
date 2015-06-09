@@ -2,6 +2,7 @@ define(['jquery',
         'mustache',
         'text!geobricks_ui_download/html/templates.hbs',
         'i18n!geobricks_ui_download/nls/translate',
+        'select2',
         'bootstrap'], function ($, Mustache, templates, translate) {
 
     'use strict';
@@ -63,14 +64,14 @@ define(['jquery',
                 var s = '';
                 s += '<option value=""></option>';
                 for (var i = 0 ; i < json.length ; i++) {
-                    s += '<option value="' + json[i].name + '">';
-                    s += json[i].name + ' - ' + json[i].description;
+                    s += '<option value="' + json[i].title + '">';
+                    s += json[i].title + ' - ' + json[i].description;
                     s += '</option>';
                 }
 
                 /* Trigger Chosen. */
                 $('#datasource_selector').html(s);
-                $('#datasource_selector').select2({disable_search_threshold: 10});
+                $('#datasource_selector').select2();
                 $('#datasource_selector').change(function() {
                     var data_source_id = $('#' + this.id + ' option:selected').val().toLowerCase();
                     _this.build_data_source_interface(data_source_id);
