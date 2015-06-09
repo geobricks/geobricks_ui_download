@@ -86,7 +86,6 @@ define(['jquery',
         var _this = this;
         Backbone.history.navigate('/en/download/' + data_source_id, true);
         $('#dynamic_filters').empty();
-        console.debug('GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase());
         require(['GEOBRICKS_UI_DOWNLOAD_' + data_source_id.toUpperCase()], function (MODULE) {
             MODULE.init({
                 lang: _this.CONFIG.lang,
